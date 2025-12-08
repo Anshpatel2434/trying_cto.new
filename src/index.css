@@ -1,21 +1,28 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   BASE STYLES - Academic Soft Theme
+   BASE STYLES - Academic Soft Theme (Enhanced)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer base {
   /* CSS Variables for theme colors */
   :root {
-    /* Light theme (default) */
-    --color-bg-primary: #FAFBFD;
+    /* Light theme (default) - Warm, inviting palette */
+    --color-bg-primary: #FAFBFC;
     --color-bg-secondary: #FFFFFF;
-    --color-bg-tertiary: #F5F7FA;
-    --color-text-primary: #1E293B;
-    --color-text-secondary: #475569;
-    --color-text-muted: #94A3B8;
+    --color-bg-tertiary: #F1F5F9;
+    --color-bg-accent: #F8FAFC;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748B;
     --color-border: #E2E8F0;
     --color-border-light: #F1F5F9;
+
+    /* Primary brand color */
+    --color-primary: #6366F1;
+    --color-primary-light: #818CF8;
+    --color-secondary: #14B8A6;
+    --color-accent: #F59E0B;
 
     /* Font families */
     font-family: 'Plus Jakarta Sans', 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
@@ -31,16 +38,22 @@
     font-feature-settings: 'kern' 1, 'liga' 1;
   }
 
-  /* Dark theme variables */
+  /* Dark theme variables - Refined gray palette */
   .dark {
-    --color-bg-primary: #18181B;
-    --color-bg-secondary: #27272A;
-    --color-bg-tertiary: #3F3F46;
-    --color-text-primary: #F4F4F5;
-    --color-text-secondary: #A1A1AA;
-    --color-text-muted: #71717A;
-    --color-border: #3F3F46;
-    --color-border-light: #52525B;
+    --color-bg-primary: #0F0F12;
+    --color-bg-secondary: #1A1A1F;
+    --color-bg-tertiary: #252529;
+    --color-bg-accent: #2A2A30;
+    --color-text-primary: #F8FAFC;
+    --color-text-secondary: #CBD5E1;
+    --color-text-muted: #64748B;
+    --color-border: #2E2E35;
+    --color-border-light: #3A3A42;
+
+    --color-primary: #818CF8;
+    --color-primary-light: #A5B4FC;
+    --color-secondary: #2DD4BF;
+    --color-accent: #FBBF24;
 
     color: var(--color-text-primary);
     background-color: var(--color-bg-primary);
@@ -56,6 +69,7 @@
     margin: 0;
     min-height: 100vh;
     background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -69,15 +83,24 @@
     text-decoration: none;
   }
 
-  /* Selection styles */
+  /* Button cursor */
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  /* Selection styles - Purple tint */
   ::selection {
-    background-color: rgba(99, 102, 241, 0.2);
-    color: #4F46E5;
+    background-color: rgba(99, 102, 241, 0.25);
+    color: #312E81;
   }
 
   .dark ::selection {
-    background-color: rgba(129, 140, 248, 0.3);
-    color: #C7D2FE;
+    background-color: rgba(129, 140, 248, 0.35);
+    color: #E0E7FF;
   }
 
   /* Scrollbar styles */
@@ -102,12 +125,18 @@
 
   /* Focus visible styles for accessibility */
   :focus-visible {
-    outline: 2px solid #6366F1;
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 
-  .dark :focus-visible {
-    outline-color: #818CF8;
+  /* Heading styles - ensure proper color inheritance */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-primary);
+  }
+
+  /* Paragraph default */
+  p {
+    color: var(--color-text-secondary);
   }
 }
 
@@ -119,57 +148,74 @@
   /* Background grid pattern */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .dark .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(63, 63, 70, 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(63, 63, 70, 0.5) 1px, transparent 1px);
+      linear-gradient(to right, rgba(129, 140, 248, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(129, 140, 248, 0.05) 1px, transparent 1px);
   }
 
   /* Dot pattern background */
   .bg-dots {
-    background-image: radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
   .dark .bg-dots {
-    background-image: radial-gradient(rgba(113, 113, 122, 0.3) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(129, 140, 248, 0.12) 1px, transparent 1px);
+  }
+
+  /* Subtle gradient overlay for cards */
+  .bg-card-gradient {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%);
+  }
+
+  .dark .bg-card-gradient {
+    background: linear-gradient(135deg, rgba(26,26,31,0.95) 0%, rgba(37,37,41,0.9) 100%);
   }
 
   /* Glassmorphism card */
   .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   .dark .glass {
-    background: rgba(39, 39, 42, 0.7);
-    border: 1px solid rgba(63, 63, 70, 0.5);
+    background: rgba(26, 26, 31, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* Text gradient utility */
   .text-gradient-primary {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A855F7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-secondary {
-    background: linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%);
+    background: linear-gradient(135deg, #14B8A6 0%, #06B6D4 50%, #0EA5E9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-accent {
-    background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+    background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #EF4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Rainbow gradient for special elements */
+  .text-gradient-rainbow {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 20%, #EC4899 40%, #F59E0B 60%, #14B8A6 80%, #6366F1 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -178,14 +224,26 @@
   /* Shadow glow effects */
   .shadow-glow {
     box-shadow:
-      0 20px 45px -20px rgba(99, 102, 241, 0.4),
-      0 35px 80px -40px rgba(20, 184, 166, 0.25);
+      0 20px 45px -20px rgba(99, 102, 241, 0.45),
+      0 35px 80px -40px rgba(139, 92, 246, 0.3);
   }
 
   .shadow-glow-sm {
     box-shadow:
-      0 10px 25px -10px rgba(99, 102, 241, 0.3),
-      0 15px 40px -20px rgba(20, 184, 166, 0.2);
+      0 10px 25px -10px rgba(99, 102, 241, 0.35),
+      0 15px 40px -20px rgba(139, 92, 246, 0.2);
+  }
+
+  .shadow-glow-secondary {
+    box-shadow:
+      0 10px 30px -10px rgba(20, 184, 166, 0.4),
+      0 20px 50px -20px rgba(6, 182, 212, 0.25);
+  }
+
+  .shadow-glow-accent {
+    box-shadow:
+      0 10px 30px -10px rgba(245, 158, 11, 0.4),
+      0 20px 50px -20px rgba(249, 115, 22, 0.25);
   }
 
   /* Shimmer animation utility */
@@ -219,6 +277,20 @@
     );
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  /* Interactive hover lift effect */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Button press effect */
+  .active-press:active {
+    transform: scale(0.98);
   }
 }
 
@@ -377,5 +449,15 @@
   }
   50% {
     box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+  }
+}
+
+/* Gradient shift animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }

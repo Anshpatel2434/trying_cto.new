@@ -5,6 +5,38 @@ import { useState } from "react";
 // Theme: Academic Soft | Mixed Fonts (Serif + Sans) | Gray-based Dark Mode
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// Color constants for reliable text rendering
+const colors = {
+    light: {
+        textPrimary: "#0F172A",
+        textSecondary: "#334155",
+        textMuted: "#64748B",
+        bgPrimary: "#FAFBFC",
+        bgCard: "#FFFFFF",
+        bgHover: "#F1F5F9",
+        border: "#E2E8F0",
+    },
+    dark: {
+        textPrimary: "#F8FAFC",
+        textSecondary: "#CBD5E1",
+        textMuted: "#64748B",
+        bgPrimary: "#0F0F12",
+        bgCard: "#1A1A1F",
+        bgHover: "#252529",
+        border: "#2E2E35",
+    },
+};
+
+// Helper function to get text color
+const getTextColor = (theme: "light" | "dark", type: "primary" | "secondary" | "muted" = "primary") => {
+    const colorMap = {
+        primary: theme === "dark" ? colors.dark.textPrimary : colors.light.textPrimary,
+        secondary: theme === "dark" ? colors.dark.textSecondary : colors.light.textSecondary,
+        muted: theme === "dark" ? colors.dark.textMuted : colors.light.textMuted,
+    };
+    return colorMap[type];
+};
+
 const DesignSystem = () => {
     const [theme, setTheme] = useState<"light" | "dark">("light");
     const [activeTab, setActiveTab] = useState("colors");
@@ -31,9 +63,10 @@ const DesignSystem = () => {
         <div
             className={`min-h-screen transition-colors duration-300 ${
                 theme === "dark"
-                    ? "bg-surface-900 text-text-dark-primary"
-                    : "bg-surface-100 text-text-primary"
+                    ? "bg-surface-900"
+                    : "bg-surface-100"
             }`}
+            style={{ color: theme === "dark" ? "#F8FAFC" : "#0F172A" }}
         >
             {/* ═══════════════════════════════════════════════════════════════════
                 HEADER
@@ -41,27 +74,27 @@ const DesignSystem = () => {
             <header
                 className={`sticky top-0 z-50 backdrop-blur-xl border-b transition-colors ${
                     theme === "dark"
-                        ? "bg-surface-900/80 border-surface-700"
-                        : "bg-surface-100/80 border-surface-200"
+                        ? "bg-surface-900/90 border-surface-700"
+                        : "bg-surface-100/90 border-surface-200"
                 }`}
             >
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-btn-primary">
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 via-violet-500 to-secondary-500 flex items-center justify-center shadow-btn-primary">
                                 <span className="text-white font-bold text-lg">V</span>
                             </div>
                             <div>
-                                <h1 className="font-serif text-xl font-semibold">
+                                <h1 
+                                    className="font-serif text-xl font-semibold"
+                                    style={{ color: theme === "dark" ? "#F8FAFC" : "#0F172A" }}
+                                >
                                     VARC Platform
                                 </h1>
                                 <p
-                                    className={`text-xs ${
-                                        theme === "dark"
-                                            ? "text-text-dark-muted"
-                                            : "text-text-muted"
-                                    }`}
+                                    className="text-xs"
+                                    style={{ color: theme === "dark" ? "#64748B" : "#64748B" }}
                                 >
                                     Design System v1.0
                                 </p>
@@ -71,11 +104,12 @@ const DesignSystem = () => {
                         {/* Theme Toggle */}
                         <button
                             onClick={toggleTheme}
-                            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 ${
+                            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 active:scale-95 ${
                                 theme === "dark"
-                                    ? "bg-surface-800 text-text-dark-primary hover:bg-surface-700 shadow-dark-card"
-                                    : "bg-white text-text-primary hover:shadow-card-md shadow-card"
+                                    ? "bg-surface-800 hover:bg-surface-700 shadow-dark-card"
+                                    : "bg-white hover:shadow-card-md shadow-card"
                             }`}
+                            style={{ color: theme === "dark" ? "#F8FAFC" : "#0F172A" }}
                         >
                             {theme === "light" ? (
                                 <>
@@ -101,15 +135,20 @@ const DesignSystem = () => {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap active:scale-95 ${
                                     activeTab === tab.id
                                         ? theme === "dark"
                                             ? "bg-primary-500/20 text-primary-400"
-                                            : "bg-primary-50 text-primary-600"
+                                            : "bg-primary-100 text-primary-700"
                                         : theme === "dark"
-                                        ? "text-text-dark-secondary hover:text-text-dark-primary hover:bg-surface-800"
-                                        : "text-text-secondary hover:text-text-primary hover:bg-surface-150"
+                                        ? "hover:bg-surface-800"
+                                        : "hover:bg-surface-150"
                                 }`}
+                                style={{ 
+                                    color: activeTab === tab.id 
+                                        ? (theme === "dark" ? "#818CF8" : "#4338CA")
+                                        : (theme === "dark" ? "#CBD5E1" : "#334155")
+                                }}
                             >
                                 {tab.label}
                             </button>
@@ -257,8 +296,10 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
     return (
         <div className="space-y-12">
             <div>
-                <h2 className="font-serif text-display-sm mb-2">Color Palette</h2>
-                <p className={theme === "dark" ? "text-text-dark-secondary" : "text-text-secondary"}>
+                <h2 className="font-serif text-display-sm mb-2" style={{ color: getTextColor(theme) }}>
+                    Color Palette
+                </h2>
+                <p style={{ color: getTextColor(theme, "secondary") }}>
                     A carefully crafted color system designed for focus, calm, and celebration.
                 </p>
             </div>
@@ -266,8 +307,10 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
             {colorGroups.map((group) => (
                 <div key={group.name} className="space-y-4">
                     <div>
-                        <h3 className="font-serif text-heading-lg">{group.name}</h3>
-                        <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                        <h3 className="font-serif text-heading-lg" style={{ color: getTextColor(theme) }}>
+                            {group.name}
+                        </h3>
+                        <p className="text-body-sm" style={{ color: getTextColor(theme, "muted") }}>
                             {group.description}
                         </p>
                     </div>
@@ -277,13 +320,13 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
                                 <div
                                     className={`h-16 rounded-xl ${color.light} ${
                                         color.main ? "ring-2 ring-offset-2 ring-primary-500" : ""
-                                    } shadow-card transition-transform hover:scale-105`}
+                                    } shadow-card transition-transform hover:scale-105 cursor-pointer`}
                                 />
                                 <div>
-                                    <p className={`text-label-md ${theme === "dark" ? "text-text-dark-primary" : "text-text-primary"}`}>
+                                    <p className="text-label-md font-medium" style={{ color: getTextColor(theme) }}>
                                         {color.name}
                                     </p>
-                                    <p className={`text-body-xs ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                                    <p className="text-body-xs" style={{ color: getTextColor(theme, "muted") }}>
                                         {color.hex}
                                     </p>
                                 </div>
@@ -296,8 +339,10 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
             {/* Semantic Colors */}
             <div className="space-y-4">
                 <div>
-                    <h3 className="font-serif text-heading-lg">Semantic Colors</h3>
-                    <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                    <h3 className="font-serif text-heading-lg" style={{ color: getTextColor(theme) }}>
+                        Semantic Colors
+                    </h3>
+                    <p className="text-body-sm" style={{ color: getTextColor(theme, "muted") }}>
                         Status and feedback colors
                     </p>
                 </div>
@@ -305,7 +350,7 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
                     {semanticColors.map((color) => (
                         <div
                             key={color.name}
-                            className={`${color.bg} rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-card-md`}
+                            className={`${color.bg} rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-card-md transition-transform hover:scale-105 cursor-pointer`}
                         >
                             <span className="font-semibold text-lg">{color.name}</span>
                             <span className="text-sm opacity-90">{color.hex}</span>
@@ -317,33 +362,35 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
             {/* Gradients */}
             <div className="space-y-4">
                 <div>
-                    <h3 className="font-serif text-heading-lg">Gradients</h3>
-                    <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                    <h3 className="font-serif text-heading-lg" style={{ color: getTextColor(theme) }}>
+                        Gradients
+                    </h3>
+                    <p className="text-body-sm" style={{ color: getTextColor(theme, "muted") }}>
                         Beautiful gradients for buttons, badges, and highlights
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-gradient-primary rounded-xl p-6 text-white shadow-btn-primary">
+                    <div className="bg-gradient-primary rounded-xl p-6 text-white shadow-btn-primary transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Primary Gradient</span>
-                        <p className="text-sm opacity-90 mt-1">Indigo → Purple</p>
+                        <p className="text-sm opacity-90 mt-1">Indigo → Violet</p>
                     </div>
-                    <div className="bg-gradient-secondary rounded-xl p-6 text-white shadow-btn-secondary">
+                    <div className="bg-gradient-secondary rounded-xl p-6 text-white shadow-btn-secondary transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Secondary Gradient</span>
                         <p className="text-sm opacity-90 mt-1">Teal → Cyan</p>
                     </div>
-                    <div className="bg-gradient-accent rounded-xl p-6 text-white shadow-btn-accent">
+                    <div className="bg-gradient-accent rounded-xl p-6 text-white shadow-btn-accent transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Accent Gradient</span>
                         <p className="text-sm opacity-90 mt-1">Amber → Orange</p>
                     </div>
-                    <div className="bg-gradient-gold rounded-xl p-6 text-white shadow-btn-accent">
+                    <div className="bg-gradient-gold rounded-xl p-6 text-white shadow-btn-accent transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Gold Achievement</span>
                         <p className="text-sm opacity-90 mt-1">For badges & trophies</p>
                     </div>
-                    <div className="bg-gradient-silver rounded-xl p-6 text-white">
+                    <div className="bg-gradient-silver rounded-xl p-6 text-slate-800 transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Silver Achievement</span>
-                        <p className="text-sm opacity-90 mt-1">For badges & trophies</p>
+                        <p className="text-sm opacity-80 mt-1">For badges & trophies</p>
                     </div>
-                    <div className="bg-gradient-bronze rounded-xl p-6 text-white">
+                    <div className="bg-gradient-bronze rounded-xl p-6 text-white transition-transform hover:scale-[1.02] cursor-pointer">
                         <span className="font-semibold">Bronze Achievement</span>
                         <p className="text-sm opacity-90 mt-1">For badges & trophies</p>
                     </div>
@@ -358,38 +405,52 @@ const ColorPaletteSection = ({ theme }: SectionProps) => {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const TypographySection = ({ theme }: SectionProps) => {
+    const textPrimary = getTextColor(theme);
+    const textSecondary = getTextColor(theme, "secondary");
+    const textMuted = getTextColor(theme, "muted");
+    const cardBg = theme === "dark" ? colors.dark.bgCard : colors.light.bgCard;
+
     return (
         <div className="space-y-12">
             <div>
-                <h2 className="font-serif text-display-sm mb-2">Typography</h2>
-                <p className={theme === "dark" ? "text-text-dark-secondary" : "text-text-secondary"}>
+                <h2 className="font-serif text-display-sm mb-2" style={{ color: textPrimary }}>
+                    Typography
+                </h2>
+                <p style={{ color: textSecondary }}>
                     Mixed font system with Fraunces (serif) for headings and Plus Jakarta Sans (sans-serif) for body text.
                 </p>
             </div>
 
             {/* Font Families */}
             <div
-                className={`rounded-2xl p-8 ${
-                    theme === "dark" ? "bg-surface-800" : "bg-white"
-                } shadow-card-md`}
+                className="rounded-2xl p-8 shadow-card-md"
+                style={{ backgroundColor: cardBg }}
             >
-                <h3 className="font-serif text-heading-lg mb-6">Font Families</h3>
+                <h3 className="font-serif text-heading-lg mb-6" style={{ color: textPrimary }}>
+                    Font Families
+                </h3>
                 <div className="space-y-8">
                     <div className="space-y-2">
-                        <p className="font-serif text-display-md">Fraunces — Serif Headings</p>
-                        <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                        <p className="font-serif text-display-md" style={{ color: textPrimary }}>
+                            Fraunces — Serif Headings
+                        </p>
+                        <p className="text-body-sm" style={{ color: textMuted }}>
                             Used for display text, headings, and editorial content. Adds an academic, sophisticated feel.
                         </p>
                     </div>
                     <div className="space-y-2">
-                        <p className="font-sans text-heading-xl">Plus Jakarta Sans — Sans-Serif Body</p>
-                        <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                        <p className="font-sans text-heading-xl" style={{ color: textPrimary }}>
+                            Plus Jakarta Sans — Sans-Serif Body
+                        </p>
+                        <p className="text-body-sm" style={{ color: textMuted }}>
                             Used for body text, UI elements, and labels. Clean, modern, and highly readable.
                         </p>
                     </div>
                     <div className="space-y-2">
-                        <p className="font-mono text-heading-md">JetBrains Mono — Monospace</p>
-                        <p className={`text-body-sm ${theme === "dark" ? "text-text-dark-muted" : "text-text-muted"}`}>
+                        <p className="font-mono text-heading-md" style={{ color: textPrimary }}>
+                            JetBrains Mono — Monospace
+                        </p>
+                        <p className="text-body-sm" style={{ color: textMuted }}>
                             Used for code snippets, technical content, and timers.
                         </p>
                     </div>
@@ -552,33 +613,37 @@ const TypographySection = ({ theme }: SectionProps) => {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 const ButtonsSection = ({ theme }: SectionProps) => {
+    const textPrimary = getTextColor(theme);
+    const textSecondary = getTextColor(theme, "secondary");
+    const cardBg = theme === "dark" ? colors.dark.bgCard : colors.light.bgCard;
+
     return (
         <div className="space-y-12">
             <div>
-                <h2 className="font-serif text-display-sm mb-2">Buttons</h2>
-                <p className={theme === "dark" ? "text-text-dark-secondary" : "text-text-secondary"}>
+                <h2 className="font-serif text-display-sm mb-2" style={{ color: textPrimary }}>
+                    Buttons
+                </h2>
+                <p style={{ color: textSecondary }}>
                     Elevated buttons with soft shadows and smooth hover transitions.
                 </p>
             </div>
 
             {/* Primary Buttons */}
-            <div
-                className={`rounded-2xl p-8 ${
-                    theme === "dark" ? "bg-surface-800" : "bg-white"
-                } shadow-card-md`}
-            >
-                <h3 className="font-serif text-heading-lg mb-6">Primary Buttons</h3>
+            <div className="rounded-2xl p-8 shadow-card-md" style={{ backgroundColor: cardBg }}>
+                <h3 className="font-serif text-heading-lg mb-6" style={{ color: textPrimary }}>
+                    Primary Buttons
+                </h3>
                 <div className="flex flex-wrap gap-4">
-                    <button className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl shadow-btn-primary hover:shadow-btn-primary-lg transition-all duration-200 hover:-translate-y-0.5">
+                    <button className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-xl shadow-btn-primary hover:shadow-btn-primary-lg transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
                         Start Practice
                     </button>
-                    <button className="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-btn-primary transition-all duration-200 hover:-translate-y-0.5 text-body-sm">
+                    <button className="px-5 py-2.5 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-btn-primary transition-all duration-200 hover:-translate-y-0.5 active:scale-95 text-body-sm">
                         Medium Button
                     </button>
-                    <button className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-btn transition-all duration-200 text-body-sm">
+                    <button className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-btn transition-all duration-200 active:scale-95 text-body-sm">
                         Small Button
                     </button>
-                    <button className="px-6 py-3 bg-primary-500 text-white font-medium rounded-xl opacity-50 cursor-not-allowed">
+                    <button className="px-6 py-3 bg-primary-500 text-white font-medium rounded-xl opacity-50 cursor-not-allowed" disabled>
                         Disabled
                     </button>
                 </div>

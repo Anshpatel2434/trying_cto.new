@@ -5,29 +5,31 @@ export default {
 	theme: {
 		extend: {
 			// ═══════════════════════════════════════════════════════════════════
-			// COLOR SYSTEM - Academic Soft Theme
+			// COLOR SYSTEM - Academic Soft Theme (Enhanced)
 			// ═══════════════════════════════════════════════════════════════════
 			colors: {
 				// ─────────────────────────────────────────────────────────────────
 				// SURFACE COLORS - Backgrounds & Containers
 				// ─────────────────────────────────────────────────────────────────
 				surface: {
-					// Light theme surfaces (warm off-whites)
-					50: "#FEFEFE", // Pure white for cards
-					100: "#FAFBFD", // Main background - soft blue-white
-					150: "#F5F7FA", // Subtle elevated areas
-					200: "#EEF1F6", // Borders, dividers
-					// Dark theme surfaces (gray-based, NOT pure black)
-					700: "#3F3F46", // Elevated cards in dark mode
-					800: "#27272A", // Card background in dark mode
-					850: "#1F1F23", // Slightly elevated dark
-					900: "#18181B", // Main dark background
-					950: "#09090B", // Deep dark for contrast
+					// Light theme surfaces (clean, bright)
+					50: "#FFFFFF", // Pure white for cards
+					100: "#FAFBFC", // Main background
+					150: "#F1F5F9", // Subtle elevated areas
+					200: "#E2E8F0", // Borders, dividers
+					250: "#CBD5E1", // Stronger borders
+					// Dark theme surfaces (rich, refined grays)
+					700: "#2A2A30", // Elevated cards in dark mode
+					750: "#232328", // Slightly elevated
+					800: "#1A1A1F", // Card background in dark mode
+					850: "#141418", // Slightly elevated dark
+					900: "#0F0F12", // Main dark background
+					950: "#0A0A0C", // Deep dark for contrast
 				},
 
 				// ─────────────────────────────────────────────────────────────────
-				// PRIMARY - Indigo (Trust, Focus, Intelligence)
-				// Used for: Primary buttons, links, active states, focus rings
+				// PRIMARY - Indigo/Violet (Trust, Focus, Intelligence)
+				// More vibrant and eye-catching
 				// ─────────────────────────────────────────────────────────────────
 				primary: {
 					50: "#EEF2FF",
@@ -44,8 +46,7 @@ export default {
 				},
 
 				// ─────────────────────────────────────────────────────────────────
-				// SECONDARY - Teal (Calm, Focus, Concentration)
-				// Used for: Secondary actions, progress indicators, highlights
+				// SECONDARY - Teal/Cyan (Calm, Growth, Balance)
 				// ─────────────────────────────────────────────────────────────────
 				secondary: {
 					50: "#F0FDFA",
@@ -63,7 +64,6 @@ export default {
 
 				// ─────────────────────────────────────────────────────────────────
 				// ACCENT - Amber/Gold (Achievement, Celebration, Motivation)
-				// Used for: Badges, streaks, achievements, highlights
 				// ─────────────────────────────────────────────────────────────────
 				accent: {
 					50: "#FFFBEB",
@@ -80,8 +80,7 @@ export default {
 				},
 
 				// ─────────────────────────────────────────────────────────────────
-				// ROSE - Warm Accent (Engagement, Notifications, Hearts)
-				// Used for: Likes, favorites, premium features
+				// ROSE - Warm Accent (Engagement, Hearts, Premium)
 				// ─────────────────────────────────────────────────────────────────
 				rose: {
 					50: "#FFF1F2",
@@ -98,52 +97,69 @@ export default {
 				},
 
 				// ─────────────────────────────────────────────────────────────────
-				// SEMANTIC COLORS
+				// VIOLET - Creative accent
 				// ─────────────────────────────────────────────────────────────────
-				success: {
-					light: "#34D399", // emerald-400
-					DEFAULT: "#10B981", // emerald-500
-					dark: "#059669", // emerald-600
-				},
-				warning: {
-					light: "#FBBF24", // amber-400
-					DEFAULT: "#F59E0B", // amber-500
-					dark: "#D97706", // amber-600
-				},
-				error: {
-					light: "#F87171", // red-400
-					DEFAULT: "#EF4444", // red-500
-					dark: "#DC2626", // red-600
-				},
-				info: {
-					light: "#60A5FA", // blue-400
-					DEFAULT: "#3B82F6", // blue-500
-					dark: "#2563EB", // blue-600
+				violet: {
+					50: "#F5F3FF",
+					100: "#EDE9FE",
+					200: "#DDD6FE",
+					300: "#C4B5FD",
+					400: "#A78BFA",
+					500: "#8B5CF6",
+					600: "#7C3AED",
+					700: "#6D28D9",
+					800: "#5B21B6",
+					900: "#4C1D95",
+					950: "#2E1065",
 				},
 
 				// ─────────────────────────────────────────────────────────────────
-				// TEXT COLORS - Optimized for readability
+				// SEMANTIC COLORS
+				// ─────────────────────────────────────────────────────────────────
+				success: {
+					light: "#34D399",
+					DEFAULT: "#10B981",
+					dark: "#059669",
+				},
+				warning: {
+					light: "#FBBF24",
+					DEFAULT: "#F59E0B",
+					dark: "#D97706",
+				},
+				error: {
+					light: "#F87171",
+					DEFAULT: "#EF4444",
+					dark: "#DC2626",
+				},
+				info: {
+					light: "#60A5FA",
+					DEFAULT: "#3B82F6",
+					dark: "#2563EB",
+				},
+
+				// ─────────────────────────────────────────────────────────────────
+				// TEXT COLORS - High contrast for readability
 				// ─────────────────────────────────────────────────────────────────
 				text: {
-					// Light mode text colors
-					primary: "#1E293B", // slate-800 - Main text
-					secondary: "#475569", // slate-600 - Secondary text
-					muted: "#94A3B8", // slate-400 - Disabled, hints
+					// Light mode text colors (darker for better contrast)
+					primary: "#0F172A", // slate-900 - Main text (darker)
+					secondary: "#334155", // slate-700 - Secondary text
+					muted: "#64748B", // slate-500 - Disabled, hints
 					inverse: "#F8FAFC", // slate-50 - Text on dark bg
-					// Dark mode text colors (prefix with 'dark-')
-					"dark-primary": "#F4F4F5", // zinc-100
-					"dark-secondary": "#A1A1AA", // zinc-400
-					"dark-muted": "#71717A", // zinc-500
+					// Dark mode text colors
+					"dark-primary": "#F8FAFC", // Almost white
+					"dark-secondary": "#CBD5E1", // slate-300
+					"dark-muted": "#64748B", // slate-500
 				},
 
 				// ─────────────────────────────────────────────────────────────────
 				// BORDER COLORS
 				// ─────────────────────────────────────────────────────────────────
 				border: {
-					light: "#E2E8F0", // slate-200
-					DEFAULT: "#CBD5E1", // slate-300
-					dark: "#3F3F46", // zinc-700
-					"dark-light": "#52525B", // zinc-600
+					light: "#E2E8F0",
+					DEFAULT: "#CBD5E1",
+					dark: "#2E2E35",
+					"dark-light": "#3A3A42",
 				},
 			},
 
@@ -151,67 +167,50 @@ export default {
 			// TYPOGRAPHY SYSTEM - Mixed Fonts (Serif + Sans-Serif)
 			// ═══════════════════════════════════════════════════════════════════
 			fontFamily: {
-				// Serif - For headings, editorial content (Academic feel)
 				serif: [
 					"Fraunces",
 					"Newsreader",
 					"Playfair Display",
-					"Merriweather",
 					"Georgia",
-					"Times New Roman",
 					"serif",
 				],
-				// Sans - For body text, UI elements (Modern, readable)
 				sans: [
 					"Plus Jakarta Sans",
 					"DM Sans",
 					"Inter",
 					"system-ui",
 					"-apple-system",
-					"BlinkMacSystemFont",
-					"Segoe UI",
 					"sans-serif",
 				],
-				// Mono - For code, technical content
 				mono: [
 					"JetBrains Mono",
 					"Fira Code",
-					"SF Mono",
 					"Consolas",
 					"monospace",
 				],
 			},
 
 			// ─────────────────────────────────────────────────────────────────
-			// FONT SIZES - Optimized type scale
+			// FONT SIZES
 			// ─────────────────────────────────────────────────────────────────
 			fontSize: {
-				// Display sizes (Serif headings)
 				"display-2xl": ["72px", { lineHeight: "1.1", fontWeight: "700", letterSpacing: "-0.02em" }],
 				"display-xl": ["60px", { lineHeight: "1.1", fontWeight: "700", letterSpacing: "-0.02em" }],
 				"display-lg": ["48px", { lineHeight: "1.15", fontWeight: "700", letterSpacing: "-0.02em" }],
 				"display-md": ["36px", { lineHeight: "1.2", fontWeight: "600", letterSpacing: "-0.01em" }],
 				"display-sm": ["30px", { lineHeight: "1.25", fontWeight: "600", letterSpacing: "-0.01em" }],
-
-				// Heading sizes (Can be serif or sans)
 				"heading-xl": ["28px", { lineHeight: "1.3", fontWeight: "600" }],
 				"heading-lg": ["24px", { lineHeight: "1.35", fontWeight: "600" }],
 				"heading-md": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
 				"heading-sm": ["18px", { lineHeight: "1.45", fontWeight: "600" }],
-
-				// Body sizes (Sans-serif)
 				"body-xl": ["20px", { lineHeight: "1.6", fontWeight: "400" }],
 				"body-lg": ["18px", { lineHeight: "1.65", fontWeight: "400" }],
 				"body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
 				"body-sm": ["14px", { lineHeight: "1.55", fontWeight: "400" }],
 				"body-xs": ["12px", { lineHeight: "1.5", fontWeight: "400" }],
-
-				// Reading sizes (Optimized for RC passages)
 				"reading-lg": ["20px", { lineHeight: "1.8", fontWeight: "400" }],
 				"reading-md": ["18px", { lineHeight: "1.75", fontWeight: "400" }],
 				"reading-sm": ["16px", { lineHeight: "1.7", fontWeight: "400" }],
-
-				// Label/Caption sizes
 				"label-lg": ["14px", { lineHeight: "1.4", fontWeight: "500" }],
 				"label-md": ["13px", { lineHeight: "1.4", fontWeight: "500" }],
 				"label-sm": ["11px", { lineHeight: "1.4", fontWeight: "500", letterSpacing: "0.02em" }],
@@ -221,14 +220,14 @@ export default {
 			// SPACING SYSTEM
 			// ═══════════════════════════════════════════════════════════════════
 			spacing: {
-				"4.5": "1.125rem", // 18px
-				"13": "3.25rem", // 52px
-				"15": "3.75rem", // 60px
-				"18": "4.5rem", // 72px
-				"22": "5.5rem", // 88px
-				"26": "6.5rem", // 104px
-				"30": "7.5rem", // 120px
-				"34": "8.5rem", // 136px
+				"4.5": "1.125rem",
+				"13": "3.25rem",
+				"15": "3.75rem",
+				"18": "4.5rem",
+				"22": "5.5rem",
+				"26": "6.5rem",
+				"30": "7.5rem",
+				"34": "8.5rem",
 				"88": "22rem",
 				"100": "25rem",
 				"112": "28rem",
@@ -236,7 +235,7 @@ export default {
 			},
 
 			// ═══════════════════════════════════════════════════════════════════
-			// BORDER RADIUS - Soft, rounded aesthetic
+			// BORDER RADIUS
 			// ═══════════════════════════════════════════════════════════════════
 			borderRadius: {
 				"sm": "6px",
@@ -250,54 +249,55 @@ export default {
 			},
 
 			// ═══════════════════════════════════════════════════════════════════
-			// BOX SHADOWS - Elevated, soft aesthetic
+			// BOX SHADOWS - Enhanced with subtle color tints
 			// ═══════════════════════════════════════════════════════════════════
 			boxShadow: {
-				// Subtle shadows for cards (Light mode)
-				"card-sm": "0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.04)",
-				"card": "0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06)",
-				"card-md": "0 4px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08)",
-				"card-lg": "0 8px 16px rgba(0, 0, 0, 0.06), 0 16px 48px rgba(0, 0, 0, 0.1)",
-				"card-xl": "0 12px 24px rgba(0, 0, 0, 0.08), 0 24px 64px rgba(0, 0, 0, 0.12)",
+				// Subtle shadows for cards (Light mode with slight blue tint)
+				"card-sm": "0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.06)",
+				"card": "0 4px 6px rgba(15, 23, 42, 0.04), 0 2px 4px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.02)",
+				"card-md": "0 8px 16px rgba(15, 23, 42, 0.06), 0 4px 8px rgba(15, 23, 42, 0.04)",
+				"card-lg": "0 16px 32px rgba(15, 23, 42, 0.08), 0 8px 16px rgba(15, 23, 42, 0.06)",
+				"card-xl": "0 24px 48px rgba(15, 23, 42, 0.1), 0 12px 24px rgba(15, 23, 42, 0.08)",
 
-				// Hover/Focus shadows
-				"hover": "0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.1)",
-				"focus": "0 0 0 3px rgba(99, 102, 241, 0.25)",
-				"focus-secondary": "0 0 0 3px rgba(20, 184, 166, 0.25)",
+				// Hover shadows
+				"hover": "0 8px 24px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.08)",
+
+				// Focus shadows
+				"focus": "0 0 0 3px rgba(99, 102, 241, 0.3)",
+				"focus-secondary": "0 0 0 3px rgba(20, 184, 166, 0.3)",
 
 				// Button shadows
-				"btn": "0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05)",
-				"btn-md": "0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.06)",
-				"btn-lg": "0 4px 8px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.08)",
+				"btn": "0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.05)",
+				"btn-md": "0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.04)",
+				"btn-lg": "0 4px 8px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.06)",
 
-				// Colored shadows for buttons
-				"btn-primary": "0 4px 12px rgba(99, 102, 241, 0.35)",
-				"btn-primary-lg": "0 8px 24px rgba(99, 102, 241, 0.4)",
-				"btn-secondary": "0 4px 12px rgba(20, 184, 166, 0.35)",
-				"btn-accent": "0 4px 12px rgba(245, 158, 11, 0.35)",
-				"btn-success": "0 4px 12px rgba(16, 185, 129, 0.35)",
-				"btn-error": "0 4px 12px rgba(239, 68, 68, 0.35)",
+				// Colored shadows for buttons (more vibrant)
+				"btn-primary": "0 4px 14px rgba(99, 102, 241, 0.4)",
+				"btn-primary-lg": "0 8px 24px rgba(99, 102, 241, 0.45)",
+				"btn-secondary": "0 4px 14px rgba(20, 184, 166, 0.4)",
+				"btn-accent": "0 4px 14px rgba(245, 158, 11, 0.4)",
+				"btn-success": "0 4px 14px rgba(16, 185, 129, 0.4)",
+				"btn-error": "0 4px 14px rgba(239, 68, 68, 0.4)",
 
-				// Dark mode shadows (more subtle)
-				"dark-card": "0 2px 8px rgba(0, 0, 0, 0.3)",
-				"dark-card-lg": "0 8px 24px rgba(0, 0, 0, 0.4)",
-				"dark-hover": "0 4px 16px rgba(0, 0, 0, 0.4)",
+				// Dark mode shadows
+				"dark-card": "0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03)",
+				"dark-card-lg": "0 12px 32px rgba(0, 0, 0, 0.5)",
+				"dark-hover": "0 8px 24px rgba(0, 0, 0, 0.5)",
 
 				// Inner shadows
 				"inner-sm": "inset 0 1px 2px rgba(0, 0, 0, 0.06)",
 				"inner": "inset 0 2px 4px rgba(0, 0, 0, 0.08)",
 
 				// Glow effects
-				"glow-primary": "0 0 20px rgba(99, 102, 241, 0.3)",
-				"glow-secondary": "0 0 20px rgba(20, 184, 166, 0.3)",
-				"glow-accent": "0 0 20px rgba(245, 158, 11, 0.3)",
+				"glow-primary": "0 0 24px rgba(99, 102, 241, 0.35)",
+				"glow-secondary": "0 0 24px rgba(20, 184, 166, 0.35)",
+				"glow-accent": "0 0 24px rgba(245, 158, 11, 0.35)",
 			},
 
 			// ═══════════════════════════════════════════════════════════════════
-			// ANIMATIONS - Smooth, delightful micro-interactions
+			// ANIMATIONS
 			// ═══════════════════════════════════════════════════════════════════
 			animation: {
-				// Entrance animations
 				"fade-in": "fadeIn 0.4s ease-out forwards",
 				"fade-in-fast": "fadeIn 0.2s ease-out forwards",
 				"fade-in-slow": "fadeIn 0.6s ease-out forwards",
@@ -308,24 +308,16 @@ export default {
 				"slide-right": "slideRight 0.4s ease-out forwards",
 				"scale-in": "scaleIn 0.3s ease-out forwards",
 				"scale-in-bounce": "scaleInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
-
-				// Feedback animations
 				"shake": "shake 0.4s ease-in-out",
 				"pulse-soft": "pulseSoft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
 				"pulse-success": "pulseSuccess 0.6s ease-out",
 				"bounce-subtle": "bounceSubtle 0.6s ease-out",
-
-				// Continuous animations
 				"spin-slow": "spin 3s linear infinite",
 				"float": "float 3s ease-in-out infinite",
 				"shimmer": "shimmer 2s linear infinite",
-
-				// Celebration animations
 				"confetti": "confetti 0.8s ease-out forwards",
 				"star-burst": "starBurst 0.6s ease-out forwards",
 				"check-mark": "checkMark 0.4s ease-out forwards",
-
-				// Progress animations
 				"progress-fill": "progressFill 1s ease-out forwards",
 				"count-up": "countUp 0.8s ease-out forwards",
 			},
@@ -418,8 +410,6 @@ export default {
 				"400": "400ms",
 				"600": "600ms",
 				"800": "800ms",
-				"1000": "1000ms",
-				"2000": "2000ms",
 			},
 			transitionTimingFunction: {
 				"bounce-in": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
@@ -443,21 +433,30 @@ export default {
 				// Subtle gradients for backgrounds
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-soft": "linear-gradient(135deg, var(--tw-gradient-stops))",
-				"gradient-warm": "linear-gradient(135deg, #FAFBFD 0%, #F5F0EB 100%)",
-				"gradient-cool": "linear-gradient(135deg, #FAFBFD 0%, #EEF2FF 100%)",
+				"gradient-warm": "linear-gradient(135deg, #FAFBFC 0%, #F8F4F0 100%)",
+				"gradient-cool": "linear-gradient(135deg, #FAFBFC 0%, #EEF2FF 100%)",
 				// Dark mode gradients
-				"gradient-dark": "linear-gradient(135deg, #18181B 0%, #1F1F23 100%)",
-				"gradient-dark-warm": "linear-gradient(135deg, #1C1917 0%, #1F1F23 100%)",
-				// Button gradients
-				"gradient-primary": "linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)",
-				"gradient-secondary": "linear-gradient(135deg, #14B8A6 0%, #0D9488 100%)",
-				"gradient-accent": "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
+				"gradient-dark": "linear-gradient(135deg, #0F0F12 0%, #1A1A1F 100%)",
+				"gradient-dark-warm": "linear-gradient(135deg, #14141A 0%, #1A1A1F 100%)",
+				// Button gradients (more vibrant)
+				"gradient-primary": "linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)",
+				"gradient-secondary": "linear-gradient(135deg, #14B8A6 0%, #06B6D4 100%)",
+				"gradient-accent": "linear-gradient(135deg, #F59E0B 0%, #F97316 100%)",
 				// Decorative gradients
 				"gradient-shine": "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
 				// Achievement gradients
 				"gradient-gold": "linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #D97706 100%)",
 				"gradient-silver": "linear-gradient(135deg, #E2E8F0 0%, #94A3B8 50%, #64748B 100%)",
 				"gradient-bronze": "linear-gradient(135deg, #F59E0B 0%, #B45309 50%, #78350F 100%)",
+				// Special highlight gradient
+				"gradient-highlight": "linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #F59E0B 100%)",
+			},
+
+			// ═══════════════════════════════════════════════════════════════════
+			// CURSOR
+			// ═══════════════════════════════════════════════════════════════════
+			cursor: {
+				pointer: "pointer",
 			},
 		},
 	},
